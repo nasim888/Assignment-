@@ -1,0 +1,122 @@
+here Dbms assignment -
+assignment - https://chatgpt.com/share/67f4d919-f53c-8010-9326-f4d81273862f
+
+
+Thanks! This is your PCA 1 DBMS Lab Assignment (22.04.2025) — a follow-up to your previous lab using the same database (Student_020). Below is a step-by-step guide with explanations and commands to do everything in the terminal using MySQL.
+
+Open MySQL in Terminal
+
+sudo mysql
+
+Then select your existing database:
+
+USE Student_020;
+
+Step-by-Step Commands and Explanations
+
+1. Create Student Table
+
+CREATE TABLE Student2 (
+    student_id VARCHAR(10) PRIMARY KEY,
+    name VARCHAR(50),
+    mobile VARCHAR(15),
+    branch VARCHAR(20),
+    age INT,
+    address VARCHAR(100),
+    marks FLOAT
+);
+
+Why?
+Creates a table to store student details with student_id as the primary key.
+
+2. Show Table Structure
+
+DESCRIBE Student2;
+
+3. Insert 10 Values
+
+INSERT INTO Student VALUES
+('BCA101', 'Arijit', '9876543210', 'BCA', 20, 'Kalyani', 85),
+('BCA102', 'Sonia', '9876543211', 'BCA', 22, 'Kolkata', 76),
+('MCA103', 'Ramesh', '9876543212', 'MCA', 23, 'Delhi', 90),
+('BSc104', 'Sneha', '9876543213', 'BSc', 21, 'Kalyani', 65),
+('BCA105', 'Nisha', '9876543214', 'BCA', 19, 'Patna', 85),
+('MCA106', 'Sahil', '9876543215', 'MCA', 24, 'Mumbai', 95),
+('BSc107', 'Ankur', '9876543216', 'BSc', 22, 'Chennai', 60),
+('BCA108', 'Sayan', '9876543217', 'BCA', 20, 'Kalyani', 85),
+('MCA109', 'Ritu', '9876543218', 'MCA', 23, 'Kolkata', 88),
+('BSc110', 'Simran', '9876543219', 'BSc', 21, 'Bangalore', 75);
+
+4. Show All Records
+
+SELECT * FROM Student2;
+
+5. Student Who Lives in ‘Kalyani’
+
+SELECT * FROM Student2 WHERE address = 'Kalyani';
+
+6. Update Marks to 85 for BCA101
+
+UPDATE Student2 SET marks = 85 WHERE student_id = 'BCA101';
+
+7. Average Marks
+
+SELECT AVG(marks) AS average_marks FROM Student2;
+
+8. Minimum Marks
+
+SELECT MIN(marks) AS minimum_marks FROM Student2;
+
+9. Maximum Marks
+
+SELECT MAX(marks) AS maximum_marks FROM Student2;
+
+10. Count Total Students
+
+SELECT COUNT(*) AS total_students FROM Student2;
+
+11. Count Students in BCA Branch
+
+SELECT COUNT(*) AS bca_students FROM Student2 WHERE branch = 'BCA';
+
+12. Branch-wise student_id and name
+
+SELECT branch, student_id, name FROM Student2;
+
+13. Name in Ascending Order
+
+SELECT student_id, name FROM Student2 ORDER BY name ASC;
+
+14. Marks in Descending Order
+
+SELECT student_id, name, marks FROM Student2 ORDER BY marks DESC;
+
+15. Students with ‘s’ in Their Name
+
+SELECT * FROM Student2 WHERE name LIKE '%s%' OR name LIKE '%S%';
+
+16. Students from BCA, MCA, and BSc
+
+SELECT * FROM Student2 WHERE branch IN ('BCA', 'MCA', 'BSc');
+
+17. Same Marks as BCA101
+
+SELECT student_id, name FROM Student2 
+WHERE marks = (SELECT marks FROM Student2 WHERE student_id = 'BCA101');
+
+18. Students with Maximum Marks
+
+SELECT * FROM Student2 
+WHERE marks = (SELECT MAX(marks) FROM Student2);
+
+19. Students with Lowest Marks
+
+SELECT * FROM Student2 
+WHERE marks = (SELECT MIN(marks) FROM Student2);
+
+20. Students with Same Branch as BCA102
+
+SELECT * FROM Student2 
+WHERE branch = (SELECT branch FROM Student2 WHERE student_id = 'BCA102');
+
+Would you like me to generate a full .sql file you can run in one shot in the terminal? Or a .txt version you can use to export the results?
